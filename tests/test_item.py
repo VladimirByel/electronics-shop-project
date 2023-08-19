@@ -10,8 +10,8 @@ def test_calculate_total_price():
     assert item2.calculate_total_price() == 100000
 
 
-
 Item.pay_rate = 0.8
+
 
 def test_apply_discount():
     item1.apply_discount()
