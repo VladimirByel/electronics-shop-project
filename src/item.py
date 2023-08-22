@@ -8,7 +8,6 @@ class Item:
     pay_rate = 1.0
     all = []
 
-    
     def __init__(self, name: str, price: float, quantity: int) -> None:
         """
         Создание экземпляра класса item
@@ -35,14 +34,12 @@ class Item:
             for row in reader:
                 Item.all.append(Item(row['name'], row['price'], row['quantity']))
 
-    
     def calculate_total_price(self) -> float:
         """
         Рассчитывает общую стоимость конкретного товара в магазине.
         """
         return self.price * self.quantity
 
-    
     def apply_discount(self) -> None:
         """
         Применяет установленную скидку для конкретного товара.
@@ -57,5 +54,3 @@ class Item:
             return int(number)
         else:
             print('not a number')
-
-
