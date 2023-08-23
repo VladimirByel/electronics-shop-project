@@ -23,7 +23,7 @@ class Item:
     @name.setter
     def name(self, value):
         if len(value) > 10:
-            self.__name = value[0:9]
+            self.__name = value[0:10]
         else:
             self.__name = value
 
@@ -32,7 +32,7 @@ class Item:
         with open('../src/items.csv', newline='') as file:
             reader = csv.DictReader(file)
             for row in reader:
-                Item.all.append(Item(row['name'], row['price'], row['quantity']))
+                cls.all.append(cls(row['name'], row['price'], row['quantity']))
 
     def calculate_total_price(self) -> float:
         """
@@ -48,9 +48,4 @@ class Item:
 
     @staticmethod
     def string_to_number(number):
-        if '.' in number:
-            return int(float(number))
-        elif number.isnumeric():
-            return int(number)
-        else:
-            print('not a number')
+        return int(float(number))
