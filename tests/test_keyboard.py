@@ -20,6 +20,6 @@ def test_double_change_lang():
     assert str(kb.language) == "RU"
 
 
-#def test_error():
-#    with pytest.raises(AttributeError):
-#        kb.language = 'CH'
+def test_error():
+    with pytest.raises(AttributeError):
+        kb.language = 'CH'

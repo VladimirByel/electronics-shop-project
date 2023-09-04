@@ -35,10 +35,13 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls):
-        with open('../src/items.csv', newline='') as file:
-            reader = csv.DictReader(file)
-            for row in reader:
-                cls.all.append(cls(row['name'], row['price'], row['quantity']))
+        try:
+            with open('../src/items.csv', newline='') as file:
+                reader = csv.DictReader(file)
+                for row in reader:
+                    cls.all.append(cls(row['name'], row['price'], row['quantity']))
+        except FileNotFoundError:
+            print("Отсутствует файл item.csv")
 
     def calculate_total_price(self) -> float:
         """
