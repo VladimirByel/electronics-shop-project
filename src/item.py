@@ -1,4 +1,5 @@
 import csv
+from src.instantiate import InstantiateCSVError
 
 
 class Item:
@@ -38,10 +39,13 @@ class Item:
         try:
             with open('../src/items.csv', newline='') as file:
                 reader = csv.DictReader(file)
-                for row in reader:
-                    cls.all.append(cls(row['name'], row['price'], row['quantity']))
+                try:
+                    for row in reader:
+                        cls.all.append(cls(row['name'], row['price'], row['quantity']))
+                except InstantiateCSVError as error:
+                    print(error.message)
         except FileNotFoundError:
-            print("Отсутствует файл item.csv")
+            raise FileNotFoundError("Отсутствует файл item.csv")
 
     def calculate_total_price(self) -> float:
         """
