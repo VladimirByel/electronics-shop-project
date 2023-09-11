@@ -43,7 +43,7 @@ class Item:
                     for row in reader:
                         cls.all.append(cls(row['name'], row['price'], row['quantity']))
                 except InstantiateCSVError as error:
-                    print(error.message)
+                    raise error.message
         except FileNotFoundError:
             raise FileNotFoundError("Отсутствует файл item.csv")
 
